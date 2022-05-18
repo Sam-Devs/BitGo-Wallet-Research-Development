@@ -5,6 +5,13 @@
   "repository": "https://github.com/Sam-Devs/BitGo-Wallet-Research-Development.git",
   "author": "Sam Ayorinde <ayorinde2@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node --unhandled-rejections=strict ./dist/app.js",
+    "dev": "nodemon --config nodemon.json src/app.ts",
+    "deploy": "git add . && git commit -m Heroku && git push origin express-app && git push heroku express-app:master",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
