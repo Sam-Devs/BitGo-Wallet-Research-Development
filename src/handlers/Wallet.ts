@@ -85,3 +85,18 @@ export const getWallet = async (req: Request, res: Response) => {
         return res.send({ status: 400, message: err})
     });
 }
+
+// Get all wallet addresses
+export const getAllWallets = async (req: Request, res: Response) => {
+    await axios
+    .get(`${BASE_URL}/wallets`, {
+        headers: {
+            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
+        }
+    })
+    .then((wallet: any) => {
+        return res.send({ status: 200, data: wallet.data })
+    }).catch((err: any) => {
+        return res.send({ status: 400, message: err})
+    });
+}
