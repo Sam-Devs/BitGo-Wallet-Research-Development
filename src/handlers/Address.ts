@@ -6,10 +6,10 @@ import { BASE_URL } from "../utils/constant"
 // Create a new address on a multi-sig wallet on BitGo
 
 export const createAddress =async (req: Request, res: Response) => {
-    const { asset, walletId }: any = req.query;
+    const { coin, walletId }: any = req.query;
 
     bitgo
-    .asset(asset as any)
+    .coin(coin as any)
     .wallets()
     .get({ id: walletId })
     .then((address: any) => {
@@ -23,14 +23,14 @@ export const createAddress =async (req: Request, res: Response) => {
 
 // Update an address on multi-sig wallet on BitGo
 export const updateAddress =async (req: Request, res: Response) => {
-    const { asset, walletid, address}: any = req.query;
+    const { coin, walletid, address}: any = req.query;
     const params = {
         label: req.body.label
     }
 
     try {
         const response = await axios.put(
-            `${BASE_URL}/${asset}/wallet/${walletid}/address/${address}`, params, {
+            `${BASE_URL}/${coin}/wallet/${walletid}/address/${address}`, params, {
                 headers: {
                     Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
                 },
@@ -47,10 +47,10 @@ export const updateAddress =async (req: Request, res: Response) => {
 // Get a single address on a multi-sig wallet on BitGo
 
 export const singleAddress =async (req: Request, res: Response) => {
-    const {asset, walletId, address }: any = req.query;
+    const {coin, walletId, address }: any = req.query;
 
     bitgo
-    .asset(asset as any)
+    .coin(coin as any)
     .wallets()
     .get({ id: walletId})
     .then(async (wallet: any) => {
@@ -67,10 +67,10 @@ export const singleAddress =async (req: Request, res: Response) => {
 // Get all addresses on a single ulti-sig wallet on BitGo
 
 export const allAddresses =async (req: Request, res: Response) => {
-    const {asset, walletId } = req.query;
+    const {coin, walletId } = req.query;
 
     bitgo
-    .asset(asset as any)
+    .coin(coin as any)
     .wallets()
     .get({ id: walletId})
     .then((wallet: any) => {
