@@ -20,3 +20,26 @@ export const createAddress =async (req: Request, res: Response) => {
         return res.send(err)
     });
 }
+
+// Update an address on multi-sig wallet on BitGo
+export const updateAddress =async (req: Request, res: Response) => {
+    const { asset, walletid, address}: any = req.query;
+    const params = {
+        label: req.body.label
+    }
+
+    try {
+        const response = await axios.put(
+            `${BASE_URL}/${asset}/wallet/${walletid}/address/${address}`, params, {
+                headers: {
+                    Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
+                },
+            }
+        )
+        console.log(response);
+        res.send({ status: 200, data: response.data})
+    } catch (error) {
+        res.send(error)
+    }
+}
+
