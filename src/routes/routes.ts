@@ -44,3 +44,5 @@ router.get("/transfer", singleTransfer);
 // Balance
 router.get("/wallet-balance", walletBalance);
 router.get("/address-balance", addressBalance);
+
+export default router;
