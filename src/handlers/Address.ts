@@ -64,3 +64,24 @@ export const singleAddress =async (req: Request, res: Response) => {
     });
 }
 
+// Get all addresses on a single ulti-sig wallet on BitGo
+
+export const allAddresses =async (req: Request, res: Response) => {
+    const {asset, walletId } = req.query;
+
+    bitgo
+    .asset(asset as any)
+    .wallets()
+    .get({ id: walletId})
+    .then((wallet: any) => {
+        return wallet.addresses();
+    })
+    .then((address: any) => {
+        console.log(address);
+        return res.send({ status: 200, data: address})
+    })
+    .catch((err) => {
+        res.send(err)
+        console.log(err);
+    });
+}
