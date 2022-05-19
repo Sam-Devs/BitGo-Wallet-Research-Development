@@ -34,3 +34,9 @@ router.post("/address", createAddress);
 router.put("/address", updateAddress);
 router.get("/addresses", allAddresses);
 router.get("/address", singleAddress);
+
+// Transfer
+router.post("/transfer", transfer);
+router.get("/transaction-status", pendingTransaction);
+router.get("/transfers", allTransfers);
+router.get("/transfer", singleTransfer);
