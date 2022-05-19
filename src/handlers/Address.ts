@@ -43,3 +43,24 @@ export const updateAddress =async (req: Request, res: Response) => {
     }
 }
 
+
+// Get a single address on a multi-sig wallet on BitGo
+
+export const singleAddress =async (req: Request, res: Response) => {
+    const {asset, walletId, address }: any = req.query;
+
+    bitgo
+    .asset(asset as any)
+    .wallets()
+    .get({ id: walletId})
+    .then(async (wallet: any) => {
+        const response = await wallet.getAddress({ address: address});
+        return res.send({
+            status: 200,
+            data: response
+        });
+    }).catch((err: any) => {
+        return res.send(err)
+    });
+}
+
