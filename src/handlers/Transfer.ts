@@ -27,3 +27,30 @@ export const transfer = async (req: Request, res: Response) => {
       return res.send(err);
     });
 };
+
+// Get all pending transactions on multi-sig wallet on BitGo
+export const pendingTransaction = async (req: Request, res: Response) => {
+  const { coin, walletId, transferId }: any = req.query;
+
+  bitgo
+    .coin(coin as any)
+    .wallets()
+    .get({ id: walletId })
+    .then((wallet: any) => {
+      return wallet
+        .getTransfer({ id: transferId })
+        .then((result: any) => {
+          console.log(result.state);
+          return res.send({
+            status: 200,
+            transaction_status: result.state,
+          });
+        })
+        .catch((err: any) => {
+          return res.send(err);
+        });
+    })
+    .catch((err: any) => {
+      return res.send(err);
+    });
+};
