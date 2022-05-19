@@ -28,7 +28,7 @@ export const createWallet = async (req: Request, res: Response) => {
 
 // Update wallet address
 export const updateWallet = async (req: Request, res: Response) => {
-    const { coin, walletId, address } = req.query;
+    const { coin, walletId, address }: any = req.query;
     const { label, passphrase } = req.body;
 
     const params = {
@@ -51,4 +51,21 @@ export const updateWallet = async (req: Request, res: Response) => {
 }
 
 // Delete wallet
-export 
+export const deleteWallet = async (req: Request, res: Response) => {
+    const { coin, walletId }: any = req.query;
+
+    await axios
+    .delete(`${BASE_URL}/${coin}/wallet/${walletId}`, {
+        headers: {
+            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        }
+    })
+    .then((wallet: any) => {
+        console.log(wallet);
+        return res.send({ status: 200, data: wallet.data})
+    }).catch((err) => {
+        console.log(err);
+        return res.send({ status: 400, message: err})
+    });
+}
+
