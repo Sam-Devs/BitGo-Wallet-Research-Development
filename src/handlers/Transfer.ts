@@ -54,3 +54,52 @@ export const pendingTransaction = async (req: Request, res: Response) => {
       return res.send(err);
     });
 };
+
+// Get all transfers on multi-sig wallet on BitGo
+export const allTransfers = async (req: Request, res: Response) => {
+  const { coin, walletId }: any = req.query;
+
+  bitgo
+    .coin(coin as any)
+    .wallets()
+    .get({ id: walletId })
+    .then((wallet: any) => {
+      return wallet
+        .transfers()
+        .then((result: any) => {
+          return res.send({ status: 200, data: result });
+        })
+        .catch((err: any) => {
+          return res.send(err);
+        });
+    })
+    .catch((err: any) => {
+      return res.send(err);
+    });
+};
+
+// Get a single multi-sig wallet on BitGo
+export const singleTransfer = async (req: Request, res: Response) => {
+  const { coin, walletId, transferId }: any = req.query;
+
+  bitgo
+    .coin(coin as any)
+    .wallets()
+    .get({ id: walletId })
+    .then((wallet: any) => {
+      return wallet
+        .getTransfer({ id: transferId })
+        .then((result: any) => {
+          return res.send({
+            status: 200,
+            data: result,
+          });
+        })
+        .catch((err: any) => {
+          return res.send(err);
+        });
+    })
+    .catch((err: any) => {
+      return res.send(err);
+    });
+};
