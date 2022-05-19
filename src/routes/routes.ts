@@ -40,3 +40,7 @@ router.post("/transfer", transfer);
 router.get("/transaction-status", pendingTransaction);
 router.get("/transfers", allTransfers);
 router.get("/transfer", singleTransfer);
+
+// Balance
+router.get("/wallet-balance", walletBalance);
+router.get("/address-balance", addressBalance);
