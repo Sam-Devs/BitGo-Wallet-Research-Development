@@ -69,3 +69,19 @@ export const deleteWallet = async (req: Request, res: Response) => {
     });
 }
 
+// Get a single wallet address
+export const getWallet = async (req: Request, res: Response) => {
+    const { coin, walletId }: any = req.query;
+
+    await axios
+    .get(`${BASE_URL}/${coin}/wallet/${walletId}`, {
+        headers: {
+            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        }
+    })
+    .then((wallet: any) => {
+        return res.send({ status: 200, data: wallet.data})
+    }).catch((err: any) => {
+        return res.send({ status: 400, message: err})
+    });
+}
