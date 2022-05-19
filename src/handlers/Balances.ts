@@ -3,7 +3,7 @@ import bitgo from "../config/bitgo";
 import { BASE_URL } from "../utils/constant";
 
 // Get a Wallet Balance by Id
-export const WalletBalance = async (req: Request, res: Response) => {
+export const walletBalance = async (req: Request, res: Response) => {
     const {coin, walletId}: any = req.query;
 
     bitgo
@@ -28,7 +28,7 @@ export const WalletBalance = async (req: Request, res: Response) => {
 }
 
 // Address Specific Balance
-export const AddressBalance = async (req: Request, res: Response) => {
+export const addressBalance = async (req: Request, res: Response) => {
     const { coin, walletId, address }: any = req.query;
 
     bitgo
