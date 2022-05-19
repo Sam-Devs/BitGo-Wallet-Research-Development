@@ -80,7 +80,7 @@ export const allAddresses =async (req: Request, res: Response) => {
         console.log(address);
         return res.send({ status: 200, data: address})
     })
-    .catch((err) => {
+    .catch((err: any) => {
         res.send(err)
         console.log(err);
     });
