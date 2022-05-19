@@ -28,4 +28,22 @@ export const WalletBalance =async (req: Request, res: Response) => {
 }
 
 // Address Specific Balance
-export const 
+export const AddressBalance =async (req: Request, res: Response) => {
+    const { coin, walletId, address } = req.query;
+
+    bitgo
+    .coin()
+    .wallets()
+    .get({ id: walletId })
+    .then( async(wallet: any) => {
+        const { balance } = await wallet.getAddress({
+            address: address
+        })
+        return res.send({
+            status: 200,
+            balance: balance
+        })
+    }).catch((err: any) => {
+        return res.send(err)
+    });
+}
