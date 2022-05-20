@@ -577,7 +577,11 @@ curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&wal
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
 
-This endpoint create a new receive address on an existing multi-sig wallet at BitGo. The endpoint receives two query parameter **coin** and **walletId** to get an existing wallet won BitGo and created a new wallet address on that wallet.
+This API creates a new address on an existing multi-sig wallet at BitGo. The endpoint receives two query parameter **coin** and **walletId** to get an existing wallet won BitGo and created a new wallet address on that wallet.
+
+**Params**
+coin | tbtc
+walletId | 628672bb0f51760007f0d9bde1bb7234
 
 **Body**
 ```
@@ -586,10 +590,6 @@ This endpoint create a new receive address on an existing multi-sig wallet at Bi
 }
 
 ```
-
-**Params**
-coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
 
 **Response 200**
 ```
@@ -671,7 +671,6 @@ walletId | 628672bb0f51760007f0d9bde1bb7234
         "pendingApprovals": []
     }
 }
-
 ```
 ### GET - Get All Wallets
 
