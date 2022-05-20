@@ -35,10 +35,10 @@ Create and Delete a wallet Webhook that sends notification whenever an event is 
 #### Wallet
 **Create, Update, Delete and get a Multi-Signature Wallet on BitGo**.
 
-###### POST - Create Wallet
+### POST - Create Wallet
 `http://localhost:8000/api/wallet`
 
-Generate or Create a new Wallet
+This API generates or creates a new Wallet
 
 **Body**
 ```
@@ -151,9 +151,9 @@ Generate or Create a new Wallet
 }
 
 ```
-###### GET - Get All Wallets
+### GET - Get All Wallets
 
-A call used to get all wallets available on a particular BitGo enterprise.
+This API call gets all wallets creates on a particular account.
 
 `http://localhost:8000/api/wallets`
 
@@ -312,9 +312,9 @@ curl --location --request GET 'http://localhost:8000/api/wallets' \ --data-raw '
 }
 
 ```
-###### PUT - Update Wallet
+### PUT - Update Wallet
 
-This API call is used to update an existing multi-signature wallet on BitGo.
+This API call updates an existing multi-signature wallet on BitGo.
 
 `http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd
 `
@@ -393,9 +393,9 @@ walletId | 6287ce93cd503300075ee728e200f7dd
 }
 
 ```
-###### GET - Get Single Wallet
+### GET - Get Single Wallet
 
-An API call used to get a single wallet.
+This API gets a single wallet.
 
 `http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
 
@@ -491,9 +491,9 @@ curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&wallet
     }
 }
 ```
-###### DEL - Delete Wallet
+### DEL - Delete Wallet
 
-This API call is used to delete an existing wallet.
+This API call deletes an existing wallet.
 
 `http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
 
@@ -570,10 +570,10 @@ curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&wal
 }
 ```
 
-#### Address
+### Address
 **Create, Update, Delete and get an Address on a multi-signature wallet on BitGo**.
 
-###### POST - Create Address
+### POST - Create Address
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
 
@@ -673,7 +673,7 @@ walletId | 628672bb0f51760007f0d9bde1bb7234
 }
 
 ```
-###### GET - Get All Wallets
+### GET - Get All Wallets
 
 A call used to get all wallets available on a particular BitGo enterprise.
 
@@ -834,7 +834,7 @@ curl --location --request GET 'http://localhost:8000/api/wallets' \ --data-raw '
 }
 
 ```
-###### PUT - Update Wallet
+### PUT - Update Wallet
 
 This API call is used to update an existing multi-signature wallet on BitGo.
 
@@ -915,7 +915,7 @@ walletId | 6287ce93cd503300075ee728e200f7dd
 }
 
 ```
-###### GET - Get Single Wallet
+### GET - Get Single Wallet
 
 An API call used to get a single wallet.
 
@@ -1013,7 +1013,7 @@ curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&wallet
     }
 }
 ```
-###### DEL - Delete Wallet
+### DEL - Delete Wallet
 
 This API call is used to delete an existing wallet.
 
