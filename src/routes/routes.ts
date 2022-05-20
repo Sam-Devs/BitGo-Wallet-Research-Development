@@ -1,9 +1,9 @@
 import express from "express";
 import {
   createAddress,
-  allAddresses,
   updateAddress,
   singleAddress,
+  getAllAddresses,
 } from "../handlers/Address";
 import { addressBalance, walletBalance } from "../handlers/Balances";
 import {
@@ -31,8 +31,8 @@ router.delete("/wallet", deleteWallet);
 
 // Address
 router.post("/address", createAddress);
+router.get("/addresses", getAllAddresses);
 router.put("/address", updateAddress);
-router.get("/addresses", allAddresses);
 router.get("/address", singleAddress);
 
 // Transfer
