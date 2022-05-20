@@ -159,8 +159,7 @@ A call used to get all wallets available on a particular BitGo enterprise.
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/wallets' \
---data-raw ''
+curl --location --request GET 'http://localhost:8000/api/wallets' \ --data-raw ''
 
 ```
 
@@ -393,4 +392,180 @@ walletId | 6287ce93cd503300075ee728e200f7dd
     }
 }
 
+```
+###### GET - Get Single Wallet
+
+An API call used to get a single wallet.
+
+`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
+
+**Params**
+coin | tbtc
+walletId | 6287ce93cd503300075ee728e200f7dd
+
+**Example Request**
+```
+curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
+--data-raw ''
+
+```
+
+**Response 200**
+```
+{
+    "status": 200,
+    "data": {
+        "id": "6287ce93cd503300075ee728e200f7dd",
+        "users": [
+            {
+                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
+                "permissions": [
+                    "admin",
+                    "view",
+                    "spend"
+                ]
+            }
+        ],
+        "coin": "tbtc",
+        "label": "updated new test wallet",
+        "m": 2,
+        "n": 3,
+        "keys": [
+            "6287ce9245b89c000777cd177abb22eb",
+            "6287ce922208e20007acb068c1b6aafd",
+            "6287ce928039630007056eef11c3133d"
+        ],
+        "keySignatures": {
+            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
+            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
+        },
+        "tags": [
+            "6287ce93cd503300075ee728e200f7dd"
+        ],
+        "disableTransactionNotifications": false,
+        "freeze": {},
+        "deleted": false,
+        "approvalsRequired": 1,
+        "isCold": false,
+        "coinSpecific": {},
+        "admin": {
+            "policy": {
+                "date": "2022-05-20T17:23:31.219Z",
+                "id": "6287ce93cd503300075ee72daad8928b",
+                "label": "default",
+                "rules": [],
+                "version": 0,
+                "latest": true
+            }
+        },
+        "clientFlags": [],
+        "walletFlags": [],
+        "allowBackupKeySigning": false,
+        "recoverable": false,
+        "startDate": "2022-05-20T17:23:31.000Z",
+        "type": "hot",
+        "buildDefaults": {},
+        "customChangeKeySignatures": {},
+        "hasLargeNumberOfAddresses": false,
+        "multisigType": "onchain",
+        "config": {},
+        "balance": 0,
+        "confirmedBalance": 0,
+        "spendableBalance": 0,
+        "balanceString": "0",
+        "confirmedBalanceString": "0",
+        "spendableBalanceString": "0",
+        "receiveAddress": {
+            "id": "6287ce93cd503300075ee736a66939cb",
+            "address": "2NEyic3CSJ5CammspkerANavCC4Rt48UGmT",
+            "chain": 10,
+            "index": 1,
+            "coin": "tbtc",
+            "wallet": "6287ce93cd503300075ee728e200f7dd",
+            "coinSpecific": {
+                "redeemScript": "0020bd67a3d6002bc2e3764dd8666373603a0f6b7bf265b56884a9c699768bab60e9",
+                "witnessScript": "522103c49b537b945e088b8c1ad8fd8e0293d04cb181f727b891e874e70ef3f25e075821033515c61cb1cd7800fb14caa5aed9db8924cdab924d339f27c182933c052b6a0821035454e4591798873039d964887208e6632944cb86bd76de9a97bdb889eab25b2053ae"
+            }
+        },
+        "pendingApprovals": []
+    }
+}
+```
+###### DEL - Delete Wallet
+
+This API call is used to delete an existing wallet.
+
+`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
+
+**Params**
+coin | tbtc
+walletId | 6287ce93cd503300075ee728e200f7dd
+
+**Example Request**
+```
+curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
+--data-raw ''
+
+```
+
+**Response 200**
+```
+{
+    "status": 200,
+    "data": {
+        "id": "6287ce93cd503300075ee728e200f7dd",
+        "users": [
+            {
+                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
+                "permissions": [
+                    "admin",
+                    "view",
+                    "spend"
+                ]
+            }
+        ],
+        "coin": "tbtc",
+        "label": "updated new test wallet",
+        "m": 2,
+        "n": 3,
+        "keys": [
+            "6287ce9245b89c000777cd177abb22eb",
+            "6287ce922208e20007acb068c1b6aafd",
+            "6287ce928039630007056eef11c3133d"
+        ],
+        "keySignatures": {
+            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
+            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
+        },
+        "tags": [
+            "6287ce93cd503300075ee728e200f7dd"
+        ],
+        "disableTransactionNotifications": false,
+        "freeze": {},
+        "deleted": true,
+        "approvalsRequired": 1,
+        "isCold": false,
+        "coinSpecific": {},
+        "admin": {
+            "policy": {
+                "date": "2022-05-20T17:23:31.219Z",
+                "id": "6287ce93cd503300075ee72daad8928b",
+                "label": "default",
+                "rules": [],
+                "version": 0,
+                "latest": true
+            }
+        },
+        "clientFlags": [],
+        "walletFlags": [],
+        "allowBackupKeySigning": false,
+        "startDate": "2022-05-20T17:23:31.000Z",
+        "type": "hot",
+        "buildDefaults": {},
+        "customChangeKeySignatures": {},
+        "hasLargeNumberOfAddresses": false,
+        "multisigType": "onchain",
+        "config": {}
+    }
+}
 ```
