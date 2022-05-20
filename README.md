@@ -728,12 +728,11 @@ curl --location --request PUT 'http://localhost:8000/api/address?coin=tbtc&walle
 }
 
 ```
-### PUT - Update Wallet
+### GET - Single Address
 
-This API call is used to update an existing multi-signature wallet on BitGo.
+This API call gets a receive a particular address.
 
-`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd
-`
+`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
 
 **Params**
 coin | tbtc
