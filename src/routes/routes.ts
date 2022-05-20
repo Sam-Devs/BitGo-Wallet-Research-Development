@@ -24,10 +24,10 @@ const router = express.Router();
 
 // Wallet
 router.post("/wallet", createWallet);
+router.put("/wallet", updateWallet);
 router.get("/wallets", getAllWallets);
 router.get("/wallet", getWallet);
-router.put("/wallet", updateWallet);
-router.delete("wallet", deleteWallet);
+router.delete("/wallet", deleteWallet);
 
 // Address
 router.post("/address", createAddress);
