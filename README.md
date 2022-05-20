@@ -400,10 +400,13 @@ This API gets a single wallet.
 `http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
 
 **Params**
+
 coin | tbtc
+
 walletId | 6287ce93cd503300075ee728e200f7dd
 
 **Example Request**
+
 ```
 curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
 --data-raw ''
@@ -498,10 +501,13 @@ This API call deletes an existing wallet.
 `http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
 
 **Params**
+
 coin | tbtc
+
 walletId | 6287ce93cd503300075ee728e200f7dd
 
 **Example Request**
+
 ```
 curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
 --data-raw ''
@@ -571,8 +577,8 @@ curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&wal
 ```
 
 ### Address
-**Create, Update, Delete and get an Address on a multi-signature wallet on BitGo**.
 
+**Create, Update, Delete and get an Address on a multi-signature wallet on BitGo**.
 ### POST - Create Address
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
