@@ -736,13 +736,12 @@ This API call gets a receive a particular address.
 
 **Params**
 coin | tbtc
-walletId | 6287ce93cd503300075ee728e200f7dd
+walletId | 628672bb0f51760007f0d9bde1bb7234
+address  | 2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
 
-**Body**
+**Example Request**
 ```
-{
-    "label": "updated new test wallet"
-}
+curl --location --request GET 'http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg'
 
 ```
 
@@ -751,77 +750,42 @@ walletId | 6287ce93cd503300075ee728e200f7dd
 {
     "status": 200,
     "data": {
-        "id": "6287ce93cd503300075ee728e200f7dd",
-        "users": [
-            {
-                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
-                "permissions": [
-                    "admin",
-                    "view",
-                    "spend"
-                ]
-            }
-        ],
+        "id": "628672bb0f51760007f0d9cb4d8e735b",
+        "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
+        "chain": 10,
+        "index": 1,
         "coin": "tbtc",
-        "label": "updated new test wallet",
-        "m": 2,
-        "n": 3,
-        "keys": [
-            "6287ce9245b89c000777cd177abb22eb",
-            "6287ce922208e20007acb068c1b6aafd",
-            "6287ce928039630007056eef11c3133d"
-        ],
-        "keySignatures": {
-            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
-            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
+        "wallet": "628672bb0f51760007f0d9bde1bb7234",
+        "label": "wallet updated address",
+        "coinSpecific": {
+            "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
+            "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
         },
-        "tags": [
-            "6287ce93cd503300075ee728e200f7dd"
-        ],
-        "disableTransactionNotifications": false,
-        "freeze": {},
-        "deleted": false,
-        "approvalsRequired": 1,
-        "isCold": false,
-        "coinSpecific": {},
-        "admin": {
-            "policy": {
-                "date": "2022-05-20T17:23:31.219Z",
-                "id": "6287ce93cd503300075ee72daad8928b",
-                "label": "default",
-                "rules": [],
-                "version": 0,
-                "latest": true
-            }
-        },
-        "clientFlags": [],
-        "walletFlags": [],
-        "allowBackupKeySigning": false,
-        "startDate": "2022-05-20T17:23:31.000Z",
-        "type": "hot",
-        "buildDefaults": {},
-        "customChangeKeySignatures": {},
-        "hasLargeNumberOfAddresses": false,
-        "multisigType": "onchain",
-        "config": {}
+        "balance": {
+            "balance": 0,
+            "balanceString": "0",
+            "totalReceived": 0,
+            "totalSent": 0,
+            "confirmedBalanceString": "0",
+            "spendableBalanceString": "0"
+        }
     }
 }
 
 ```
-### GET - Get Single Wallet
+### GET - All Addresses
 
-An API call used to get a single wallet.
+An API call gets all addresses.
 
-`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
+`http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
 **Params**
 coin | tbtc
-walletId | 6287ce93cd503300075ee728e200f7dd
+walletId | 628672bb0f51760007f0d9bde1bb7234
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
---data-raw ''
+curl --location --request GET 'http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234'
 
 ```
 
@@ -830,157 +794,63 @@ curl --location --request GET 'http://localhost:8000/api/wallet?coin=tbtc&wallet
 {
     "status": 200,
     "data": {
-        "id": "6287ce93cd503300075ee728e200f7dd",
-        "users": [
-            {
-                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
-                "permissions": [
-                    "admin",
-                    "view",
-                    "spend"
-                ]
-            }
-        ],
         "coin": "tbtc",
-        "label": "updated new test wallet",
-        "m": 2,
-        "n": 3,
-        "keys": [
-            "6287ce9245b89c000777cd177abb22eb",
-            "6287ce922208e20007acb068c1b6aafd",
-            "6287ce928039630007056eef11c3133d"
-        ],
-        "keySignatures": {
-            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
-            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
-        },
-        "tags": [
-            "6287ce93cd503300075ee728e200f7dd"
-        ],
-        "disableTransactionNotifications": false,
-        "freeze": {},
-        "deleted": false,
-        "approvalsRequired": 1,
-        "isCold": false,
-        "coinSpecific": {},
-        "admin": {
-            "policy": {
-                "date": "2022-05-20T17:23:31.219Z",
-                "id": "6287ce93cd503300075ee72daad8928b",
-                "label": "default",
-                "rules": [],
-                "version": 0,
-                "latest": true
-            }
-        },
-        "clientFlags": [],
-        "walletFlags": [],
-        "allowBackupKeySigning": false,
-        "recoverable": false,
-        "startDate": "2022-05-20T17:23:31.000Z",
-        "type": "hot",
-        "buildDefaults": {},
-        "customChangeKeySignatures": {},
-        "hasLargeNumberOfAddresses": false,
-        "multisigType": "onchain",
-        "config": {},
-        "balance": 0,
-        "confirmedBalance": 0,
-        "spendableBalance": 0,
-        "balanceString": "0",
-        "confirmedBalanceString": "0",
-        "spendableBalanceString": "0",
-        "receiveAddress": {
-            "id": "6287ce93cd503300075ee736a66939cb",
-            "address": "2NEyic3CSJ5CammspkerANavCC4Rt48UGmT",
-            "chain": 10,
-            "index": 1,
-            "coin": "tbtc",
-            "wallet": "6287ce93cd503300075ee728e200f7dd",
-            "coinSpecific": {
-                "redeemScript": "0020bd67a3d6002bc2e3764dd8666373603a0f6b7bf265b56884a9c699768bab60e9",
-                "witnessScript": "522103c49b537b945e088b8c1ad8fd8e0293d04cb181f727b891e874e70ef3f25e075821033515c61cb1cd7800fb14caa5aed9db8924cdab924d339f27c182933c052b6a0821035454e4591798873039d964887208e6632944cb86bd76de9a97bdb889eab25b2053ae"
-            }
-        },
-        "pendingApprovals": []
-    }
-}
-```
-### DEL - Delete Wallet
-
-This API call is used to delete an existing wallet.
-
-`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd`
-
-**Params**
-coin | tbtc
-walletId | 6287ce93cd503300075ee728e200f7dd
-
-**Example Request**
-```
-curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd' \
---data-raw ''
-
-```
-
-**Response 200**
-```
-{
-    "status": 200,
-    "data": {
-        "id": "6287ce93cd503300075ee728e200f7dd",
-        "users": [
+        "totalAddressCount": 4,
+        "addresses": [
             {
-                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
-                "permissions": [
-                    "admin",
-                    "view",
-                    "spend"
-                ]
+                "id": "628672bb0f51760007f0d9cb4d8e735b",
+                "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
+                "chain": 10,
+                "index": 1,
+                "coin": "tbtc",
+                "wallet": "628672bb0f51760007f0d9bde1bb7234",
+                "label": "wallet updated address",
+                "coinSpecific": {
+                    "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
+                    "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
+                }
+            },
+            {
+                "id": "6288036280396300071db0b2ae46a312",
+                "address": "2N8ZXeJ2twhL21dDkBZVW2gL29VYgeJn3p5",
+                "chain": 10,
+                "index": 2,
+                "coin": "tbtc",
+                "wallet": "628672bb0f51760007f0d9bde1bb7234",
+                "label": "wallet updated address 2",
+                "coinSpecific": {
+                    "redeemScript": "0020e32e262faf66fa7602ba9e187aba0d707cc9e86e77d316a72bf485c4f8ac4191",
+                    "witnessScript": "522103bfd8c9fe88fe89560fd9c986b512fe8f672f66381eba41d8c91246272504d8d42103032ce053571d9f07dfd194f521e5b07b24865db27d229edba8e139173a539c922102554d96f5e5cee08f1af1d22e3c672c0bdb5e559fc18ee0b9da316d39fa55364f53ae"
+                }
+            },
+            {
+                "id": "628803692208e20007c50f7943abaaf6",
+                "address": "2NFdSjjPYSWmEjucNqxpN46GhQDk6R1Dy1c",
+                "chain": 10,
+                "index": 3,
+                "coin": "tbtc",
+                "wallet": "628672bb0f51760007f0d9bde1bb7234",
+                "label": "wallet updated address 3",
+                "coinSpecific": {
+                    "redeemScript": "0020ba49dbc590a70cbe1d74a233965bf49027996e621f5603de4aaa3e2b0fef3ebf",
+                    "witnessScript": "522102a55c294770bc92d41898d6c46064444e69d68e90cede76ec834726a4ea4a10bd2102458ddcefb69d84298c52e5ed2a35b597c65a81e24c2a2205f2db50645bad86662103c7933dff10d843ed5c360ef61476e9d3bee43ef139e013780fd7f15f174a641453ae"
+                }
+            },
+            {
+                "id": "6288036f45b89c0007901652483c9fa3",
+                "address": "2Muu2RW591fcB7z5wTCFAGgr2iGWBqxoVt9",
+                "chain": 10,
+                "index": 4,
+                "coin": "tbtc",
+                "wallet": "628672bb0f51760007f0d9bde1bb7234",
+                "label": "wallet updated address 4",
+                "coinSpecific": {
+                    "redeemScript": "002087b2bfe17a095f4e6c1719155eb45f80e89f0252ad6be0433a08bcf99d77248b",
+                    "witnessScript": "5221031d97b3be0ca13fa4edf4a92f8dda44075011d84e072a37abcc4f8d666a1f0cb02103549cf62d1fcbb4a5291c61ccbea6194cf8b2941be587882ff9d546506f98f64f210394152ac3e04321c28d1b37e69c134d85f2fb926051a2fff5dc2f2050ee95eb6653ae"
+                }
             }
         ],
-        "coin": "tbtc",
-        "label": "updated new test wallet",
-        "m": 2,
-        "n": 3,
-        "keys": [
-            "6287ce9245b89c000777cd177abb22eb",
-            "6287ce922208e20007acb068c1b6aafd",
-            "6287ce928039630007056eef11c3133d"
-        ],
-        "keySignatures": {
-            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
-            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
-        },
-        "tags": [
-            "6287ce93cd503300075ee728e200f7dd"
-        ],
-        "disableTransactionNotifications": false,
-        "freeze": {},
-        "deleted": true,
-        "approvalsRequired": 1,
-        "isCold": false,
-        "coinSpecific": {},
-        "admin": {
-            "policy": {
-                "date": "2022-05-20T17:23:31.219Z",
-                "id": "6287ce93cd503300075ee72daad8928b",
-                "label": "default",
-                "rules": [],
-                "version": 0,
-                "latest": true
-            }
-        },
-        "clientFlags": [],
-        "walletFlags": [],
-        "allowBackupKeySigning": false,
-        "startDate": "2022-05-20T17:23:31.000Z",
-        "type": "hot",
-        "buildDefaults": {},
-        "customChangeKeySignatures": {},
-        "hasLargeNumberOfAddresses": false,
-        "multisigType": "onchain",
-        "config": {}
+        "count": 4
     }
 }
 ```
