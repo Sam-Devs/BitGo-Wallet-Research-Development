@@ -313,3 +313,84 @@ curl --location --request GET 'http://localhost:8000/api/wallets' \
 }
 
 ```
+###### PUT - Update Wallet
+
+This API call is used to update an existing multi-signature wallet on BitGo.
+
+`http://localhost:8000/api/wallet?coin=tbtc&walletId=6287ce93cd503300075ee728e200f7dd
+`
+
+**Params**
+coin | tbtc
+walletId | 6287ce93cd503300075ee728e200f7dd
+
+**Body**
+```
+{
+    "label": "updated new test wallet"
+}
+
+```
+
+**Response 200**
+```
+{
+    "status": 200,
+    "data": {
+        "id": "6287ce93cd503300075ee728e200f7dd",
+        "users": [
+            {
+                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
+                "permissions": [
+                    "admin",
+                    "view",
+                    "spend"
+                ]
+            }
+        ],
+        "coin": "tbtc",
+        "label": "updated new test wallet",
+        "m": 2,
+        "n": 3,
+        "keys": [
+            "6287ce9245b89c000777cd177abb22eb",
+            "6287ce922208e20007acb068c1b6aafd",
+            "6287ce928039630007056eef11c3133d"
+        ],
+        "keySignatures": {
+            "backupPub": "203b2a2d40d34122d3a3a71344edd6dd553e7f26b303eb540fd7e52be4c5628a7a20a22084194938d204ddafafe678467a687c3fb6af5e5b6ec13f67ef53b4776f",
+            "bitgoPub": "1f62770e28cb26b52a9b6f4872208eee29b912482732aab6e5bdf2fcb4168fd3364acce613a718cd4d6f3d91f40d09705d0189428ef7d3676eb0101c4f1d6c7265"
+        },
+        "tags": [
+            "6287ce93cd503300075ee728e200f7dd"
+        ],
+        "disableTransactionNotifications": false,
+        "freeze": {},
+        "deleted": false,
+        "approvalsRequired": 1,
+        "isCold": false,
+        "coinSpecific": {},
+        "admin": {
+            "policy": {
+                "date": "2022-05-20T17:23:31.219Z",
+                "id": "6287ce93cd503300075ee72daad8928b",
+                "label": "default",
+                "rules": [],
+                "version": 0,
+                "latest": true
+            }
+        },
+        "clientFlags": [],
+        "walletFlags": [],
+        "allowBackupKeySigning": false,
+        "startDate": "2022-05-20T17:23:31.000Z",
+        "type": "hot",
+        "buildDefaults": {},
+        "customChangeKeySignatures": {},
+        "hasLargeNumberOfAddresses": false,
+        "multisigType": "onchain",
+        "config": {}
+    }
+}
+
+```
