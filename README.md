@@ -17,15 +17,16 @@ Create and Delete a wallet Webhook that sends notification whenever an event is 
 
 ### SETUP - GETTING STARTED
 #### Production
-Create a production based BitGo enterprise Account on [BitGo](https://app.bitgo.com).
+- Create a production based BitGo enterprise Account on [BitGo](https://app.bitgo.com).
 
-After an account has been created successfully, Navigate to *Account Setting > Developer* Options to obtain a new *ACCESS TOKEN*, which will be used as a Bearer token to the header and also to Authenticate BitGo SDK during instance initialization.
+- After an account has been created successfully, Navigate to *Account Setting > Developer* Options to obtain a new *ACCESS TOKEN*, which will be used as a Bearer token to the header and also to Authenticate BitGo SDK during instance initialization.
 
-After obtaining your Access Token, create and add an environment variable name *ACCESS_TOKEN* and yout token as the value.
+- After obtaining your Access Token, create and add an environment variable name *ACCESS_TOKEN* and yout token as the value.
 
 #### Test/Localhost
-Create a production based BitGo enterprise Account on [BitGo](https://app.bitgo-test.com).
+- Create a production based BitGo enterprise Account on [BitGo](https://app.bitgo-test.com).
 
-After successful creation of the account, Navigate to *Account Setting > Developer* Options to obtain a new *ACCESS TOKEN*, Which will be used as a Bearer token to the header and also to Authenticate BitGo SDK during instance initialization.
-After obtaining your Access Token, create and add an environment variable name *ACCESS_TOKEN* and yout token as the value.
+- After successful creation of the account, Navigate to *Account Setting > Developer* Options to obtain a new *ACCESS TOKEN*, Which will be used as a Bearer token to the header and also to Authenticate BitGo SDK during instance initialization.
+
+- After obtaining your Access Token, create and add an environment variable name *ACCESS_TOKEN* and yout token as the value.
 
