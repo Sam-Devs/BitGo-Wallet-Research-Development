@@ -37,7 +37,9 @@ Create and Delete a wallet Webhook that sends notification whenever an event is 
 
 ###### POST - Create Wallet
 `http://localhost:8000/api/wallet`
+
 Generate or Create a new Wallet
+
 **Body**
 ```
 {
