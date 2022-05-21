@@ -32,7 +32,7 @@ export const addressBalance = async (req: Request, res: Response) => {
     const { coin, walletId, address }: any = req.query;
 
     bitgo
-    .coin()
+    .coin(coin as any)
     .wallets()
     .get({ id: walletId })
     .then( async(wallet: any) => {

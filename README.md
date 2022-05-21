@@ -1450,3 +1450,82 @@ curl --location --request GET 'http://localhost:8000/api/transfer?coin=tbtc&wall
 }
 
 ```
+
+### Balance
+
+**Wallet Balance, Address Balance on a multi-signature wallet on BitGo**.
+### GET - Wallet Balance
+
+This API returns selects wallet based on the given filter parameters. Gets all balances for the selected wallets and sums up the balances by coin.
+
+`http://localhost:8000/api/wallet-balance?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
+
+
+**Params**
+
+KEY                 Value
+
+coin        |       tbtc
+
+walletId    |       62892ea3d4e2b7000755df541b7764c6
+
+**Example Request**
+```
+curl --location --request GET 'http://localhost:8000/api/wallet-balance?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6'
+
+```
+
+**Response 200**
+```
+{
+    "status": 200,
+    "balances": {
+        "balance": 61783,
+        "confirmedBalance": 61783,
+        "spendableBalance": 61783,
+        "balanceString": "61783",
+        "confirmedBalanceString": "61783",
+        "spendableBalanceString": "61783"
+    }
+}
+
+```
+### GET - Address Balance
+
+This API returns returns the balance of a selected or particular address.
+
+`http://localhost:8000/api/address-balance?coin=tbtc&walletId=62892ea81eaabc00070c755442c59015&address=2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH`
+
+
+**Params**
+
+KEY                 Value
+
+coin        |       tbtc
+
+walletId    |       62892ea81eaabc00070c755442c59015
+
+address     |       2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH
+
+**Example Request**
+```
+curl --location --request GET 'http://localhost:8000/api/address-balance?coin=tbtc&walletId=62892ea81eaabc00070c755442c59015&address=2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH''
+
+```
+
+**Response 200**
+```
+{
+    "status": 200,
+    "balance": {
+        "updated": "2022-05-21T19:53:28.000Z",
+        "balance": 10000,
+        "balanceString": "10000",
+        "totalReceived": 10000,
+        "totalSent": 0,
+        "confirmedBalanceString": "10000",
+        "spendableBalanceString": "10000"
+    }
+}
+
+```
