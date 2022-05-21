@@ -320,8 +320,12 @@ This API call updates an existing multi-signature wallet on BitGo.
 `
 
 **Params**
-coin | tbtc
-walletId | 6287ce93cd503300075ee728e200f7dd
+
+Key                 Value
+
+coin        |       tbtc
+
+walletId    |       6287ce93cd503300075ee728e200f7dd
 
 **Body**
 ```
@@ -401,9 +405,11 @@ This API gets a single wallet.
 
 **Params**
 
-coin | tbtc
+Key                 Value
 
-walletId | 6287ce93cd503300075ee728e200f7dd
+coin        |       tbtc
+
+walletId    |       6287ce93cd503300075ee728e200f7dd
 
 **Example Request**
 
