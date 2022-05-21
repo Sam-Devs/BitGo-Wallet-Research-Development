@@ -502,9 +502,11 @@ This API call deletes an existing wallet.
 
 **Params**
 
-coin | tbtc
+Key                 Value
 
-walletId | 6287ce93cd503300075ee728e200f7dd
+coin        |       tbtc
+
+walletId    |       6287ce93cd503300075ee728e200f7dd
 
 **Example Request**
 
@@ -588,9 +590,10 @@ This API creates a new address on an existing multi-sig wallet at BitGo. The end
 
 **Params**
 
-coin | tbtc
+Key                 Value
+coin        |       tbtc
 
-walletId | 628672bb0f51760007f0d9bde1bb7234
+walletId    |       628672bb0f51760007f0d9bde1bb7234
 
 **Body**
 ```
@@ -688,9 +691,13 @@ This API updates a receive address on a wallet
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
 
 **Params**
-coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
-address  | 2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
+Key                 Value
+
+coin        |       tbtc
+
+walletId    |       628672bb0f51760007f0d9bde1bb7234
+
+address     |       2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
 
 **Body**
 ```
@@ -744,9 +751,13 @@ This API call gets a receive a particular address.
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
 
 **Params**
-coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
-address  | 2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
+Key                 Value
+
+coin        |       tbtc
+
+walletId    |       628672bb0f51760007f0d9bde1bb7234
+
+address     |       2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
 
 **Example Request**
 ```
@@ -789,8 +800,10 @@ An API call gets all receive addresses.
 `http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
 **Params**
-coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
+Key                 Value
+coin        |       tbtc
+
+walletId    |       628672bb0f51760007f0d9bde1bb7234
 
 **Example Request**
 ```
@@ -879,13 +892,14 @@ This API checks the status of a particular transaction. The Transaction status r
 
 
 **Params**
-KEY    Value
 
-coin | tbtc
+KEY                 Value
 
-walletId | 62892ea3d4e2b7000755df541b7764c6
+coin        |       tbtc
 
-transferId | 90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed
+walletId    |       62892ea3d4e2b7000755df541b7764c6
+
+transferId  |      90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed
 
 **Example Request**
 ```
@@ -909,8 +923,12 @@ This API send cryptocurrency to a destination address.
 `http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 **Params**
-coin | tbtc
-walletId | 62892ea3d4e2b7000755df541b7764c6
+
+Key         |       Value
+
+coin        |       tbtc
+
+walletId    |       62892ea3d4e2b7000755df541b7764c6
 
 **Body**
 ```
@@ -1018,8 +1036,10 @@ This API returns deposits and withdrawals for a wallet. Transfers are sorted in 
 `http://localhost:8000/api/transfers?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 **Params**
-coin | tbtc
-walletId | 62892ea3d4e2b7000755df541b7764c6
+
+Key             Value
+coin        |   tbtc
+walletId    |   62892ea3d4e2b7000755df541b7764c6
 
 **Example Request**
 ```
@@ -1278,13 +1298,14 @@ A transfer is a wallet specific object. Each transfer will only output the respe
 `http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6&transferId=0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34`
 
 **Params**
-Key    Value
 
-coin | tbtc
+Key             Value
 
-walletId | 62892ea3d4e2b7000755df541b7764c6
+coin        |     tbtc
 
-transferId | 0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34
+walletId    |      62892ea3d4e2b7000755df541b7764c6
+
+transferId  |   0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34
 
 **Example Request**
 ```
