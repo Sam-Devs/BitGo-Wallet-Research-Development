@@ -597,6 +597,7 @@ This API creates a new address on an existing multi-sig wallet at BitGo. The end
 **Params**
 
 Key                 Value
+
 coin        |       tbtc
 
 walletId    |       628672bb0f51760007f0d9bde1bb7234
@@ -697,6 +698,7 @@ This API updates a receive address on a wallet
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
 
 **Params**
+
 Key                 Value
 
 coin        |       tbtc
@@ -757,6 +759,7 @@ This API call gets a receive a particular address.
 `http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
 
 **Params**
+
 Key                 Value
 
 coin        |       tbtc
@@ -806,7 +809,9 @@ An API call gets all receive addresses.
 `http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
 **Params**
+
 Key                 Value
+
 coin        |       tbtc
 
 walletId    |       628672bb0f51760007f0d9bde1bb7234
@@ -1044,7 +1049,9 @@ This API returns deposits and withdrawals for a wallet. Transfers are sorted in 
 **Params**
 
 Key             Value
+
 coin        |   tbtc
+
 walletId    |   62892ea3d4e2b7000755df541b7764c6
 
 **Example Request**
