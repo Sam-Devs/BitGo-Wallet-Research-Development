@@ -875,20 +875,20 @@ This API checks the status of a particular transaction. The Transaction status r
 - Unconfirmed
 - Confirmed
 
-`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
+`http://localhost:8000/api/transaction-status?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6&transferId=90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed`
 
 
 **Params**
-
+KEY    Value
 coin | tbtc
 
-walletId | 628672bb0f51760007f0d9bde1bb7234
+walletId | 62892ea3d4e2b7000755df541b7764c6
 
-**Body**
+transferId | 90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed
+
+**Example Request**
 ```
-{
-    "label": "wallet updated address 1"
-}
+curl --location --request GET 'http://localhost:8000/api/transaction-status?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6&transferId=90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed'
 
 ```
 
@@ -896,81 +896,7 @@ walletId | 628672bb0f51760007f0d9bde1bb7234
 ```
 {
     "status": 200,
-    "data": {
-        "id": "628672bb0f51760007f0d9bde1bb7234",
-        "users": [
-            {
-                "user": "62866f7f2525ce0008b8f25d2e2d1d37",
-                "permissions": [
-                    "admin",
-                    "view",
-                    "spend"
-                ]
-            }
-        ],
-        "coin": "tbtc",
-        "label": "wallet updated",
-        "m": 2,
-        "n": 3,
-        "keys": [
-            "628672ba8266dc000766516a1377cbfa",
-            "628672b9dfcbbc00079d71b382b18070",
-            "628672badfcbbc00079d71d473970e63"
-        ],
-        "keySignatures": {
-            "backupPub": "1fd392f8057caf0751b330a85926ad5481ab93b9f30264b9d53a722c4b3f72f8d15d4951ed22fc160b5773f8f5bab9e8449a2f893ee9dcb07335792c6e711ce920",
-            "bitgoPub": "1fe0a4e907ff4aef0756b86bcf85153c81be999c5b97c02759f171d98c3a552da8580a68fe6efa2b9a5588f1eceef5534f18ef1b12282168d17bbc407befd0860c"
-        },
-        "tags": [
-            "628672bb0f51760007f0d9bde1bb7234"
-        ],
-        "disableTransactionNotifications": false,
-        "freeze": {},
-        "deleted": false,
-        "approvalsRequired": 1,
-        "isCold": false,
-        "coinSpecific": {},
-        "admin": {
-            "policy": {
-                "date": "2022-05-19T16:39:23.113Z",
-                "id": "628672bb0f51760007f0d9c2c1999b18",
-                "label": "default",
-                "rules": [],
-                "version": 0,
-                "latest": true
-            }
-        },
-        "clientFlags": [],
-        "walletFlags": [],
-        "allowBackupKeySigning": false,
-        "recoverable": false,
-        "startDate": "2022-05-19T16:39:23.000Z",
-        "type": "hot",
-        "buildDefaults": {},
-        "customChangeKeySignatures": {},
-        "hasLargeNumberOfAddresses": false,
-        "multisigType": "onchain",
-        "config": {},
-        "balance": 0,
-        "confirmedBalance": 0,
-        "spendableBalance": 0,
-        "balanceString": "0",
-        "confirmedBalanceString": "0",
-        "spendableBalanceString": "0",
-        "receiveAddress": {
-            "id": "628672bb0f51760007f0d9cb4d8e735b",
-            "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
-            "chain": 10,
-            "index": 1,
-            "coin": "tbtc",
-            "wallet": "628672bb0f51760007f0d9bde1bb7234",
-            "coinSpecific": {
-                "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
-                "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
-            }
-        },
-        "pendingApprovals": []
-    }
+    "transaction_status": "confirmed"
 }
 ```
 ### PUT - Update Address
