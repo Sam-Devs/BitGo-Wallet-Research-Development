@@ -580,13 +580,16 @@ curl --location --request DELETE 'http://localhost:8000/api/wallet?coin=tbtc&wal
 
 **Create, Update, Delete and get an Address on a multi-signature wallet on BitGo**.
 ### POST - Create Address
-`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
-
 
 This API creates a new address on an existing multi-sig wallet at BitGo. The endpoint receives two query parameter **coin** and **walletId** to get an existing wallet won BitGo and created a new wallet address on that wallet.
 
+`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
+
+
 **Params**
+
 coin | tbtc
+
 walletId | 628672bb0f51760007f0d9bde1bb7234
 
 **Body**
@@ -781,7 +784,7 @@ curl --location --request GET 'http://localhost:8000/api/address?coin=tbtc&walle
 ```
 ### GET - All Addresses
 
-An API call gets all addresses.
+An API call gets all receive addresses.
 
 `http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
 
