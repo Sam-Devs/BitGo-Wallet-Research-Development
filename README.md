@@ -880,6 +880,7 @@ This API checks the status of a particular transaction. The Transaction status r
 
 **Params**
 KEY    Value
+
 coin | tbtc
 
 walletId | 62892ea3d4e2b7000755df541b7764c6
@@ -899,32 +900,38 @@ curl --location --request GET 'http://localhost:8000/api/transaction-status?coin
     "transaction_status": "confirmed"
 }
 ```
-### PUT - Update Address
+### POST - Transfer
 
-This API updates a receive address on a wallet
+This API send cryptocurrency to a destination address.
 
-`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
+**NB**: The wallet passphrase is required and should corresponds to the exact phrase of the wallet.
+
+`http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 **Params**
 coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
-address  | 2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
+walletId | 62892ea3d4e2b7000755df541b7764c6
 
 **Body**
 ```
 {
-    "label": "wallet updated address"
+    "amount": 0.0001,
+    "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+    "walletPassphrase": "passphrase for test wallet"
 }
 
 ```
 
 **Example Request**
 ```
-curl --location --request PUT 'http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg' \
+curl --location --request POST 'http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "label": "wallet updated address"
+    "amount": 0.0001,
+    "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+    "walletPassphrase": "passphrase for test wallet"
 }'
+
 ```
 
 **Response 200**
@@ -932,25 +939,74 @@ curl --location --request PUT 'http://localhost:8000/api/address?coin=tbtc&walle
 {
     "status": 200,
     "data": {
-        "id": "628672bb0f51760007f0d9cb4d8e735b",
-        "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
-        "chain": 10,
-        "index": 1,
-        "coin": "tbtc",
-        "wallet": "628672bb0f51760007f0d9bde1bb7234",
-        "label": "wallet updated address",
-        "coinSpecific": {
-            "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
-            "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
+        "transfer": {
+            "entries": [
+                {
+                    "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                    "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                    "value": -72000,
+                    "valueString": "-72000"
+                },
+                {
+                    "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+                    "value": 10000,
+                    "valueString": "10000",
+                    "isChange": false,
+                    "isPayGo": false
+                },
+                {
+                    "address": "2NAvVnS86ayNkgu7zW1AD2NLbxCK455Gsdq",
+                    "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                    "value": 61783,
+                    "valueString": "61783",
+                    "isChange": true,
+                    "isPayGo": false
+                }
+            ],
+            "id": "62894243d23fd70007338e392d7169e9",
+            "coin": "tbtc",
+            "wallet": "62892ea3d4e2b7000755df541b7764c6",
+            "walletType": "hot",
+            "txid": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34",
+            "height": 999999999,
+            "heightId": "999999999-62894243d23fd70007338e392d7169e9",
+            "date": "2022-05-21T19:49:24.963Z",
+            "type": "send",
+            "value": -10217,
+            "valueString": "-10217",
+            "baseValue": -10000,
+            "baseValueString": "-10000",
+            "feeString": "217",
+            "payGoFee": 0,
+            "payGoFeeString": "0",
+            "usd": -3.0087409846,
+            "usdRate": 29448.38,
+            "state": "signed",
+            "instant": false,
+            "isReward": false,
+            "isFee": false,
+            "tags": [
+                "62892ea3d4e2b7000755df541b7764c6"
+            ],
+            "history": [
+                {
+                    "date": "2022-05-21T19:49:24.961Z",
+                    "action": "signed"
+                },
+                {
+                    "date": "2022-05-21T19:49:23.900Z",
+                    "user": "62892d2e1eaabc00070bce670e77679f",
+                    "action": "created"
+                }
+            ],
+            "signedDate": "2022-05-21T19:49:24.961Z",
+            "vSize": 214,
+            "signedTime": "2022-05-21T19:49:24.961Z",
+            "createdTime": "2022-05-21T19:49:23.900Z"
         },
-        "balance": {
-            "balance": 0,
-            "balanceString": "0",
-            "totalReceived": 0,
-            "totalSent": 0,
-            "confirmedBalanceString": "0",
-            "spendableBalanceString": "0"
-        }
+        "txid": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34",
+        "tx": "01000000000101ed3f480409c5b0421328fbd3a49141e5c321112da9fa275b7fbf624e03aae0900000000023220020b216fd0cc184f5d2f7c6e6638a10501e9c17833a438e265c93d467f8a07082c9ffffffff02102700000000000017a914317ee18d9360400c3a3541652ddd1f7f3bcda4db8757f100000000000017a914c1e78be1a532012d0be12da293af10f3b1b08c97870400473044022031c31afe2b8044fa4686971b61023c13402ce52403665ac171343e08cdc44ef302206aa917e5e5cf913f25daef5503e3888279fc82f72a81f23e44d40e74d3f4c83501473044022057049a12a24f8f65784a3532a26d1e8e41285091fc5d2b83b69fd19f88ab9e8302200e6139a0b28cbb7a482c1cfe54147b266671c63c9ec71118d41c822cceadea130169522103f24ce9f85a57177104d1869fb51ed6d5c13174c8c870011204de4b19c1aa5a5c210249046fdc0b14c23e252b611bb271deffab126404b1e782e2180d0f7b620b9c862102e699346498d59321323f4d1c0a99711721314e1b14dc832f796a67378f58d66853ae5dfa2100",
+        "status": "signed"
     }
 }
 
