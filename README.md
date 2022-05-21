@@ -1011,20 +1011,20 @@ curl --location --request POST 'http://localhost:8000/api/transfer?coin=tbtc&wal
 }
 
 ```
-### GET - Single Address
+### GET - All Transfer
 
-This API call gets a receive a particular address.
+This API returns deposits and withdrawals for a wallet. Transfers are sorted in descending order by *height*, then *id*. Transfers with *rejected* and *pendingApproval* states are excluded by default.
 
-`http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg`
+`http://localhost:8000/api/transfers?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 **Params**
 coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
-address  | 2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg
+walletId | 62892ea3d4e2b7000755df541b7764c6
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/address?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234&address=2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg'
+curl --location --request GET 'http://localhost:8000/api/transfers?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6' \
+--data-raw ''
 
 ```
 
@@ -1033,42 +1033,263 @@ curl --location --request GET 'http://localhost:8000/api/address?coin=tbtc&walle
 {
     "status": 200,
     "data": {
-        "id": "628672bb0f51760007f0d9cb4d8e735b",
-        "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
-        "chain": 10,
-        "index": 1,
         "coin": "tbtc",
-        "wallet": "628672bb0f51760007f0d9bde1bb7234",
-        "label": "wallet updated address",
-        "coinSpecific": {
-            "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
-            "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
-        },
-        "balance": {
-            "balance": 0,
-            "balanceString": "0",
-            "totalReceived": 0,
-            "totalSent": 0,
-            "confirmedBalanceString": "0",
-            "spendableBalanceString": "0"
-        }
+        "transfers": [
+            {
+                "entries": [
+                    {
+                        "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+                        "wallet": "62892ea81eaabc00070c755442c59015",
+                        "value": 10000,
+                        "valueString": "10000",
+                        "isChange": false,
+                        "isPayGo": false
+                    },
+                    {
+                        "address": "2NAvVnS86ayNkgu7zW1AD2NLbxCK455Gsdq",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "value": 61783,
+                        "valueString": "61783",
+                        "isChange": true,
+                        "isPayGo": false
+                    },
+                    {
+                        "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "value": -72000,
+                        "valueString": "-72000",
+                        "isChange": false,
+                        "isPayGo": false
+                    }
+                ],
+                "id": "62894243d23fd70007338e392d7169e9",
+                "coin": "tbtc",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "walletType": "hot",
+                "txid": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34",
+                "height": 2226782,
+                "heightId": "002226782-62894243d23fd70007338e392d7169e9",
+                "date": "2022-05-21T19:53:28.000Z",
+                "confirmations": 11,
+                "type": "send",
+                "value": -10217,
+                "valueString": "-10217",
+                "baseValue": -10000,
+                "baseValueString": "-10000",
+                "feeString": "217",
+                "payGoFee": 0,
+                "payGoFeeString": "0",
+                "usd": -3.0051895554,
+                "usdRate": 29413.62,
+                "state": "confirmed",
+                "instant": false,
+                "isReward": false,
+                "isFee": false,
+                "tags": [
+                    "62892ea3d4e2b7000755df541b7764c6"
+                ],
+                "history": [
+                    {
+                        "date": "2022-05-21T19:53:28.000Z",
+                        "action": "confirmed",
+                        "comment": null
+                    },
+                    {
+                        "date": "2022-05-21T19:49:44.343Z",
+                        "action": "unconfirmed",
+                        "comment": null
+                    },
+                    {
+                        "date": "2022-05-21T19:49:24.961Z",
+                        "action": "signed"
+                    },
+                    {
+                        "date": "2022-05-21T19:49:23.900Z",
+                        "user": "62892d2e1eaabc00070bce670e77679f",
+                        "action": "created"
+                    }
+                ],
+                "signedDate": "2022-05-21T19:49:24.961Z",
+                "vSize": 214,
+                "usersNotified": true,
+                "confirmedTime": "2022-05-21T19:53:28.000Z",
+                "unconfirmedTime": "2022-05-21T19:49:44.343Z",
+                "signedTime": "2022-05-21T19:49:24.961Z",
+                "createdTime": "2022-05-21T19:49:23.900Z",
+                "label": "",
+                "outputs": [
+                    {
+                        "id": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34:0",
+                        "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+                        "value": 10000,
+                        "valueString": "10000",
+                        "blockHeight": 2226782,
+                        "date": "2022-05-21T19:53:28.000Z",
+                        "wallet": "62892ea81eaabc00070c755442c59015",
+                        "chain": 10,
+                        "index": 1,
+                        "redeemScript": "0020bec0ab5f71c8f964e41db9312d96127ee68d3804241ee59cd81272ee483df51f",
+                        "isSegwit": true
+                    },
+                    {
+                        "id": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34:1",
+                        "address": "2NAvVnS86ayNkgu7zW1AD2NLbxCK455Gsdq",
+                        "value": 61783,
+                        "valueString": "61783",
+                        "blockHeight": 2226782,
+                        "date": "2022-05-21T19:53:28.000Z",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "chain": 11,
+                        "index": 1,
+                        "redeemScript": "0020d62d7d26e33d07ec7b7a930626c9662a6581e8cb8951f00e0c71e2e17838e84f",
+                        "isSegwit": true
+                    }
+                ],
+                "inputs": [
+                    {
+                        "id": "90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed:0",
+                        "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                        "value": 72000,
+                        "valueString": "72000",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "chain": 10,
+                        "index": 1,
+                        "redeemScript": "0020b216fd0cc184f5d2f7c6e6638a10501e9c17833a438e265c93d467f8a07082c9",
+                        "isSegwit": true
+                    }
+                ]
+            },
+            {
+                "entries": [
+                    {
+                        "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "value": 72000,
+                        "valueString": "72000",
+                        "isChange": false,
+                        "isPayGo": false
+                    },
+                    {
+                        "address": "tb1qav20pryq7cvcwxrhsl5pzja7mm8n7ywq4ysuhh",
+                        "value": 1170478153,
+                        "valueString": "1170478153",
+                        "isChange": false,
+                        "isPayGo": false
+                    },
+                    {
+                        "address": "tb1qctu3twdvy0sh8xqea59llywfqaltnc0sdk0n90",
+                        "value": -1170550295,
+                        "valueString": "-1170550295",
+                        "isChange": false,
+                        "isPayGo": false
+                    }
+                ],
+                "id": "62893ac5a565b100071079b7bc60393d",
+                "coin": "tbtc",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "walletType": "hot",
+                "txid": "90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed",
+                "height": 2226774,
+                "heightId": "002226774-62893ac5a565b100071079b7bc60393d",
+                "date": "2022-05-21T19:25:41.000Z",
+                "confirmations": 19,
+                "type": "receive",
+                "value": 72000,
+                "valueString": "72000",
+                "baseValue": 72000,
+                "baseValueString": "72000",
+                "feeString": "142",
+                "payGoFee": 0,
+                "payGoFeeString": "0",
+                "usd": 21.2240304,
+                "usdRate": 29477.82,
+                "state": "confirmed",
+                "instant": false,
+                "isReward": false,
+                "isFee": false,
+                "tags": [
+                    "62892ea3d4e2b7000755df541b7764c6"
+                ],
+                "history": [
+                    {
+                        "date": "2022-05-21T19:25:41.000Z",
+                        "action": "confirmed",
+                        "comment": null
+                    },
+                    {
+                        "date": "2022-05-21T19:17:24.399Z",
+                        "action": "unconfirmed",
+                        "comment": null
+                    },
+                    {
+                        "date": "2022-05-21T19:17:24.399Z",
+                        "action": "created",
+                        "comment": null
+                    }
+                ],
+                "usersNotified": true,
+                "confirmedTime": "2022-05-21T19:25:41.000Z",
+                "unconfirmedTime": "2022-05-21T19:17:24.399Z",
+                "createdTime": "2022-05-21T19:17:24.399Z",
+                "label": "",
+                "outputs": [
+                    {
+                        "id": "90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed:0",
+                        "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                        "value": 72000,
+                        "valueString": "72000",
+                        "blockHeight": 2226774,
+                        "date": "2022-05-21T19:25:41.000Z",
+                        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                        "chain": 10,
+                        "index": 1,
+                        "redeemScript": "0020b216fd0cc184f5d2f7c6e6638a10501e9c17833a438e265c93d467f8a07082c9",
+                        "isSegwit": true
+                    },
+                    {
+                        "id": "90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed:1",
+                        "address": "tb1qav20pryq7cvcwxrhsl5pzja7mm8n7ywq4ysuhh",
+                        "value": 1170478153,
+                        "valueString": "1170478153",
+                        "blockHeight": 2226774,
+                        "date": "2022-05-21T19:25:41.000Z",
+                        "isSegwit": false
+                    }
+                ],
+                "inputs": [
+                    {
+                        "id": "0e52c3b48355343ba8b5368ee34f57150c33dd6ae15d4be4b9f91cf365a9a82f:0",
+                        "address": "tb1qctu3twdvy0sh8xqea59llywfqaltnc0sdk0n90",
+                        "value": 1170550295,
+                        "valueString": "1170550295",
+                        "isSegwit": false
+                    }
+                ]
+            }
+        ]
     }
 }
 
 ```
-### GET - All Addresses
+### GET - Single Transfer 
 
-An API call gets all receive addresses.
+A transfer is a wallet specific object. Each transfer will only output the respective wallet id which the transfer is associated with.
 
-`http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234`
+`http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6&transferId=0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34`
 
 **Params**
+Key    Value
+
 coin | tbtc
-walletId | 628672bb0f51760007f0d9bde1bb7234
+
+walletId | 62892ea3d4e2b7000755df541b7764c6
+
+transferId | 0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/addresses?coin=tbtc&walletId=628672bb0f51760007f0d9bde1bb7234'
+curl --location --request GET 'http://localhost:8000/api/transfer?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6&transferId=0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34' \
+--data-raw ''
 
 ```
 
@@ -1077,63 +1298,128 @@ curl --location --request GET 'http://localhost:8000/api/addresses?coin=tbtc&wal
 {
     "status": 200,
     "data": {
-        "coin": "tbtc",
-        "totalAddressCount": 4,
-        "addresses": [
+        "entries": [
             {
-                "id": "628672bb0f51760007f0d9cb4d8e735b",
-                "address": "2N2vgyAL7C6JHo9FK6rJD7PHbtvmjyg8yjg",
-                "chain": 10,
-                "index": 1,
-                "coin": "tbtc",
-                "wallet": "628672bb0f51760007f0d9bde1bb7234",
-                "label": "wallet updated address",
-                "coinSpecific": {
-                    "redeemScript": "00201ef936be8350677d5be26fd3ce771154a80af7e5bbfb1313ab6b3cbb4ad22ab4",
-                    "witnessScript": "522102fd5fc0cf22d4befe05aed806a1604bedc37eb18a1113393babd77f418e749cb72103ef884188445ecf2223fcf3757bdbbd1560cb4620c6b5714de64ebb068ea46c802103e18d32a2f53981573f73fd793e7ad617b156c2a0660ffc64c0f84a8091ea694553ae"
-                }
+                "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+                "value": 10000,
+                "valueString": "10000",
+                "isChange": false,
+                "isPayGo": false
             },
             {
-                "id": "6288036280396300071db0b2ae46a312",
-                "address": "2N8ZXeJ2twhL21dDkBZVW2gL29VYgeJn3p5",
-                "chain": 10,
-                "index": 2,
-                "coin": "tbtc",
-                "wallet": "628672bb0f51760007f0d9bde1bb7234",
-                "label": "wallet updated address 2",
-                "coinSpecific": {
-                    "redeemScript": "0020e32e262faf66fa7602ba9e187aba0d707cc9e86e77d316a72bf485c4f8ac4191",
-                    "witnessScript": "522103bfd8c9fe88fe89560fd9c986b512fe8f672f66381eba41d8c91246272504d8d42103032ce053571d9f07dfd194f521e5b07b24865db27d229edba8e139173a539c922102554d96f5e5cee08f1af1d22e3c672c0bdb5e559fc18ee0b9da316d39fa55364f53ae"
-                }
+                "address": "2NAvVnS86ayNkgu7zW1AD2NLbxCK455Gsdq",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "value": 61783,
+                "valueString": "61783",
+                "isChange": true,
+                "isPayGo": false
             },
             {
-                "id": "628803692208e20007c50f7943abaaf6",
-                "address": "2NFdSjjPYSWmEjucNqxpN46GhQDk6R1Dy1c",
-                "chain": 10,
-                "index": 3,
-                "coin": "tbtc",
-                "wallet": "628672bb0f51760007f0d9bde1bb7234",
-                "label": "wallet updated address 3",
-                "coinSpecific": {
-                    "redeemScript": "0020ba49dbc590a70cbe1d74a233965bf49027996e621f5603de4aaa3e2b0fef3ebf",
-                    "witnessScript": "522102a55c294770bc92d41898d6c46064444e69d68e90cede76ec834726a4ea4a10bd2102458ddcefb69d84298c52e5ed2a35b597c65a81e24c2a2205f2db50645bad86662103c7933dff10d843ed5c360ef61476e9d3bee43ef139e013780fd7f15f174a641453ae"
-                }
-            },
-            {
-                "id": "6288036f45b89c0007901652483c9fa3",
-                "address": "2Muu2RW591fcB7z5wTCFAGgr2iGWBqxoVt9",
-                "chain": 10,
-                "index": 4,
-                "coin": "tbtc",
-                "wallet": "628672bb0f51760007f0d9bde1bb7234",
-                "label": "wallet updated address 4",
-                "coinSpecific": {
-                    "redeemScript": "002087b2bfe17a095f4e6c1719155eb45f80e89f0252ad6be0433a08bcf99d77248b",
-                    "witnessScript": "5221031d97b3be0ca13fa4edf4a92f8dda44075011d84e072a37abcc4f8d666a1f0cb02103549cf62d1fcbb4a5291c61ccbea6194cf8b2941be587882ff9d546506f98f64f210394152ac3e04321c28d1b37e69c134d85f2fb926051a2fff5dc2f2050ee95eb6653ae"
-                }
+                "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "value": -72000,
+                "valueString": "-72000",
+                "isChange": false,
+                "isPayGo": false
             }
         ],
-        "count": 4
+        "id": "62894243d23fd70007338e392d7169e9",
+        "coin": "tbtc",
+        "wallet": "62892ea3d4e2b7000755df541b7764c6",
+        "walletType": "hot",
+        "txid": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34",
+        "height": 2226782,
+        "heightId": "002226782-62894243d23fd70007338e392d7169e9",
+        "date": "2022-05-21T19:53:28.000Z",
+        "confirmations": 11,
+        "type": "send",
+        "value": -10217,
+        "valueString": "-10217",
+        "baseValue": -10000,
+        "baseValueString": "-10000",
+        "feeString": "217",
+        "payGoFee": 0,
+        "payGoFeeString": "0",
+        "usd": -3.0051895554,
+        "usdRate": 29413.62,
+        "state": "confirmed",
+        "instant": false,
+        "isReward": false,
+        "isFee": false,
+        "tags": [
+            "62892ea3d4e2b7000755df541b7764c6"
+        ],
+        "history": [
+            {
+                "date": "2022-05-21T19:53:28.000Z",
+                "action": "confirmed",
+                "comment": null
+            },
+            {
+                "date": "2022-05-21T19:49:44.343Z",
+                "action": "unconfirmed",
+                "comment": null
+            },
+            {
+                "date": "2022-05-21T19:49:24.961Z",
+                "action": "signed"
+            },
+            {
+                "date": "2022-05-21T19:49:23.900Z",
+                "user": "62892d2e1eaabc00070bce670e77679f",
+                "action": "created"
+            }
+        ],
+        "signedDate": "2022-05-21T19:49:24.961Z",
+        "vSize": 214,
+        "usersNotified": true,
+        "confirmedTime": "2022-05-21T19:53:28.000Z",
+        "unconfirmedTime": "2022-05-21T19:49:44.343Z",
+        "signedTime": "2022-05-21T19:49:24.961Z",
+        "createdTime": "2022-05-21T19:49:23.900Z",
+        "outputs": [
+            {
+                "id": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34:0",
+                "address": "2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH",
+                "value": 10000,
+                "valueString": "10000",
+                "blockHeight": 2226782,
+                "date": "2022-05-21T19:53:28.000Z",
+                "wallet": "62892ea81eaabc00070c755442c59015",
+                "chain": 10,
+                "index": 1,
+                "redeemScript": "0020bec0ab5f71c8f964e41db9312d96127ee68d3804241ee59cd81272ee483df51f",
+                "isSegwit": true
+            },
+            {
+                "id": "0e55c2d75a78fdbbb1fc8eb7ad434fb39b323c86be2d51893b0b92d9888f8f34:1",
+                "address": "2NAvVnS86ayNkgu7zW1AD2NLbxCK455Gsdq",
+                "value": 61783,
+                "valueString": "61783",
+                "blockHeight": 2226782,
+                "date": "2022-05-21T19:53:28.000Z",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "chain": 11,
+                "index": 1,
+                "redeemScript": "0020d62d7d26e33d07ec7b7a930626c9662a6581e8cb8951f00e0c71e2e17838e84f",
+                "isSegwit": true
+            }
+        ],
+        "inputs": [
+            {
+                "id": "90e0aa034e62bf7f5b27faa92d1121c3e54191a4d3fb281342b0c50904483fed:0",
+                "address": "2NERGHQ3b8a1E6byYWtJdSRvk5DowmM6KPk",
+                "value": 72000,
+                "valueString": "72000",
+                "wallet": "62892ea3d4e2b7000755df541b7764c6",
+                "chain": 10,
+                "index": 1,
+                "redeemScript": "0020b216fd0cc184f5d2f7c6e6638a10501e9c17833a438e265c93d467f8a07082c9",
+                "isSegwit": true
+            }
+        ],
+        "label": ""
     }
 }
+
 ```
