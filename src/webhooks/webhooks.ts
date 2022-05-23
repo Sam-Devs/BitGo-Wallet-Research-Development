@@ -26,3 +26,4 @@ export const addWalletWebhook = (req: Request, res: Response) => {
         return res.send(err)
     });
 }
+
