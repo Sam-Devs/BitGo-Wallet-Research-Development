@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import bitgo from "../config/bitgo";
-import axios from "axios";
 
 // Transfer from one wallet address to another
 export const transfer = async (req: Request, res: Response) => {
