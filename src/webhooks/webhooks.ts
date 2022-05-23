@@ -27,3 +27,25 @@ export const addWalletWebhook = (req: Request, res: Response) => {
     });
 }
 
+// Delete a webhook 
+export const deleteWalletWebhook = (req: Request, res: Response) => {
+    const { coin, walletId }: any = req.query;
+    const { callbackUrl, type }: any = req.query;
+
+    bitgo
+    .coin(coin as any)
+    .wallets()
+    .get({ id: walletId })
+    .then((wallet: any) => {
+        return wallet.removeWebhook({
+            url: callbackUrl,
+            type: type
+        })
+    })
+    .then((webhook: IWebhook) => {
+        console.log(webhook);
+        return res.send({ status: 200, data: webhook });
+    }).catch((err: any) => {
+        return res.send(err)
+    });
+}
