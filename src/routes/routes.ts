@@ -19,6 +19,7 @@ import {
   getAllWallets,
   getWallet,
 } from "../handlers/Wallet";
+import { addWalletWebhook, deleteWalletWebhook } from "../webhooks/webhooks";
 
 const router = express.Router();
 
@@ -45,4 +46,7 @@ router.get("/transfer", singleTransfer);
 router.get("/wallet-balance", walletBalance);
 router.get("/address-balance", addressBalance);
 
+// Webhooks
+router.post("/webhook", addWalletWebhook);
+router.get("/webhook", deleteWalletWebhook);
 export default router;
