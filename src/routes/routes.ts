@@ -48,5 +48,6 @@ router.get("/address-balance", addressBalance);
 
 // Webhooks
 router.post("/webhook", addWalletWebhook);
-router.get("/webhook", deleteWalletWebhook);
+router.delete("/webhook", deleteWalletWebhook);
+
 export default router;

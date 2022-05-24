@@ -1554,7 +1554,7 @@ For testing case, [goto](https://webhook.site) to create a temporary URL that wi
 
 Add a webhook that will result in an HTTP callback at the specified URL from BitGo when events are triggered. This endpoint as well receives query parameters *coin* and *walletId* to get the wallet we want to receive notification on our *callback* URL whenever an event is triggered. The *type* in the request body specifies the type of event that will be fired and send to the callback URL.
 
-`http://localhost:8000/api/wallet-balance?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
+`http://localhost:8000/api/webhook?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 
 **Params**
@@ -1567,7 +1567,12 @@ walletId    |       62892ea3d4e2b7000755df541b7764c6
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/wallet-balance?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6'
+curl --location --request POST 'http://localhost:8000/api/webhook?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "callbackUrl": "https://webhook.site/46c8daa2-1665-4fd5-8a3d-6059a8265739",
+    "type": "transaction"
+}'
 
 ```
 
@@ -1575,22 +1580,27 @@ curl --location --request GET 'http://localhost:8000/api/wallet-balance?coin=tbt
 ```
 {
     "status": 200,
-    "balances": {
-        "balance": 61783,
-        "confirmedBalance": 61783,
-        "spendableBalance": 61783,
-        "balanceString": "61783",
-        "confirmedBalanceString": "61783",
-        "spendableBalanceString": "61783"
+    "data": {
+        "id": "628d10710791450008b5bd37a242f8ab",
+        "created": "2022-05-24T17:05:53.935Z",
+        "walletId": "62892ea3d4e2b7000755df541b7764c6",
+        "coin": "tbtc",
+        "type": "transaction",
+        "url": "https://webhook.site/46c8daa2-1665-4fd5-8a3d-6059a8265739",
+        "version": 2,
+        "state": "active",
+        "successiveFailedAttempts": 0,
+        "listenToFailureStates": false,
+        "allToken": false
     }
 }
 
 ```
-### GET - Address Balance
+### DELETE - Delete Webhook
 
-This API returns returns the balance of a selected or particular address.
+This API removes a webhook will cause new events of the specified type to no longer trigger HTTP callbacks to your URLs.
 
-`http://localhost:8000/api/address-balance?coin=tbtc&walletId=62892ea81eaabc00070c755442c59015&address=2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH`
+`http://localhost:8000/api/webhook?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6`
 
 
 **Params**
@@ -1599,13 +1609,16 @@ KEY                 Value
 
 coin        |       tbtc
 
-walletId    |       62892ea81eaabc00070c755442c59015
-
-address     |       2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH
+walletId    |       62892ea3d4e2b7000755df541b7764c6
 
 **Example Request**
 ```
-curl --location --request GET 'http://localhost:8000/api/address-balance?coin=tbtc&walletId=62892ea81eaabc00070c755442c59015&address=2Mwkw6XxyVfpx5Mk1J64mcc1KAsD7nwjoXH''
+curl --location --request DELETE 'http://localhost:8000/api/webhook?coin=tbtc&walletId=62892ea3d4e2b7000755df541b7764c6' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "callbackUrl": "https://webhook.site/46c8daa2-1665-4fd5-8a3d-6059a8265739",
+    "type": "transaction"
+}'
 
 ```
 
@@ -1613,14 +1626,8 @@ curl --location --request GET 'http://localhost:8000/api/address-balance?coin=tb
 ```
 {
     "status": 200,
-    "balance": {
-        "updated": "2022-05-21T19:53:28.000Z",
-        "balance": 10000,
-        "balanceString": "10000",
-        "totalReceived": 10000,
-        "totalSent": 0,
-        "confirmedBalanceString": "10000",
-        "spendableBalanceString": "10000"
+    "data": {
+        "removed": 1
     }
 }
 
