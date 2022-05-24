@@ -7,9 +7,10 @@ export interface IWebhook {
     type: string;
     url: string;
     version: number;
-    numConfirmation: number;
+    numConfirmations: number;
     state: string;
-    lastAttemp: string;
+    lastAttempt: string;
     failingSince: string;
     successiveFailedAttempts: number;
-}
+  }
+  
