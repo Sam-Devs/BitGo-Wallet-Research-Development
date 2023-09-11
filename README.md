@@ -1,4 +1,4 @@
-# BitGo-Wallet-Research-Development
+# BitGo-Wallet Research & Development
 
 BitGo provides a simple and robust RESTful API and client SDK to integrate digital currency wallets with your application.
 
